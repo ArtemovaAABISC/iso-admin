@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminContentComponent } from './components/admin-content/admin-content.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DxAccordionModule, DxButtonModule, DxListModule, DxMenuModule, DxTextBoxModule } from 'devextreme-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +16,15 @@ import { AdminContentComponent } from './components/admin-content/admin-content.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    DxButtonModule,
+    DxListModule,
+    DxTextBoxModule,
+    ReactiveFormsModule,
+    DxMenuModule,
+    DxAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

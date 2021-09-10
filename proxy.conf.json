@@ -1,0 +1,9 @@
+
+{
+"/api/*": {
+  "target": "http://10.3.29.161:8086",
+  "secure": false,
+  "logLevel": "debug",
+  "changeOrigin": true
+  }
+}
