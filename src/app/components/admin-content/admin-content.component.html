@@ -1,44 +1,48 @@
 <div class="content">
   <div class="block-ul">
     <h1>Список контента</h1>
-    <dx-button text="Создать" type="danger" stylingMode="outlined" class="creat-button"></dx-button>
+    <dx-button text="Создать" type="danger" stylingMode="outlined" class="creat-button" (click)="add()"></dx-button>
     <div *ngFor="let contentitem of responses" class="block-list">
-
       <p class="id_content">ID:{{contentitem.id}}</p>
       <p class="object_content">Object:{{contentitem.caption}}</p>
       <div class="block-button">
-        <dx-button text="Обновить" type="success" stylingMode="contained" class="button-block"></dx-button>
-        <dx-button text="Клонировать" type="default" stylingMode="contained" class="button-block"></dx-button>
-        <dx-button text="Удалить" type="danger" stylingMode="contained" class="button-block"></dx-button>
+        <dx-button text="Обновить" type="success" stylingMode="contained" class="button-block"
+          (click)="UCDContent(contentitem.id, 0)"></dx-button>
+        <dx-button text="Клонировать" type="default" stylingMode="contained" class="button-block"
+          (click)="UCDContent(contentitem.id, 1)"></dx-button>
+        <dx-button text="Удалить" type="danger" stylingMode="contained" class="button-block"
+          (click)="deleteContent(contentitem.id)">
+        </dx-button>
       </div>
     </div>
   </div>
-
-  <!-- <p class="id_content">{{response.id}}</p>
-      <p class="object_content">{{response.title}}</p> -->
-
-
   <div class="forms-up">
-    <h1>Форма создания</h1>
-    <!-- <div class="form-group"><label for="id_cont">Id</label><input type="text" id="id_cont" name="id_cont"
-        placeholder="ID Контента" [(ngModel)]="content.id"></div>
-    <div class="form-group"><label for="caption_n">Caption</label><input type="text" id="caption_n" name="caption_n"
-        placeholder="Подпись" [(ngModel)]="content.caption"></div>
-    <div class="form-group"><label for="">Url</label><input type="text" placeholder="Ссылка" [(ngModel)]="content.url">
+    <h1>{{form_h1}} объект</h1>
+    <div class="form-group">
+      <label for="id_cont">Id</label>
+      <input type="text" id="id_cont" name="id_cont" placeholder="ID Контента" [(ngModel)]="idcontent"
+        [disabled]="disabled[0]">
     </div>
-    <div class="form-group"><label for="">Hint</label><input type="text" [(ngModel)]="content.hint"
-        placeholder="Подсказка"></div> 
-    <dx-button text="Сохранить" type="danger" stylingMode="outlined" class="save-button" (click)="addContent(content)">
-    </dx-button>-->
-    <div class="form-group"><label for="id_cont">Id</label><input type="text" id="id_cont" name="id_cont"
-        placeholder="ID Контента" [(ngModel)]="idcontent"></div>
-    <div class="form-group"><label for="caption_n">Caption</label><input type="text" id="caption_n" name="caption_n"
-        placeholder="Подпись" [(ngModel)]="captioncontent"></div>
-    <div class="form-group"><label for="">Url</label><input type="text" placeholder="Ссылка" [(ngModel)]="urlcontent">
+    <div class="form-group">
+      <label for="caption_n">Caption</label>
+      <input type="text" id="caption_n" name="caption_n" placeholder="Подпись" [(ngModel)]="captioncontent"
+        [disabled]="disabled[1]">
     </div>
-    <div class="form-group"><label for="">Hint</label><input type="text" [(ngModel)]="hintcontent"
-        placeholder="Подсказка"></div>
-    <dx-button text="Сохранить" type="danger" stylingMode="outlined" class="save-button" (click)="addContent()">
-    </dx-button>
+    <div class="form-group">
+      <label for="">Url</label>
+      <input type="text" placeholder="Ссылка" [(ngModel)]="urlcontent" [disabled]="disabled[2]">
+    </div>
+    <div class="form-group">
+      <label for="">Hint</label>
+      <input type="text" [(ngModel)]="hintcontent" placeholder="Подсказка" [disabled]="disabled[3]">
+    </div>
+    <div class="form-group" *ngIf="display">
+      <dx-check-box text="Удалить объект" [value]="checkBox_remove" [disabled]="disabled[4]"
+        [(ngModel)]="checkBox_remove"></dx-check-box>
+    </div>
+    <dx-button text="Сохранить" type="danger" stylingMode="outlined" class="save-button"
+      (click)="but_click(num_content)" [disabled]="disabled[5]"></dx-button>
+    <dx-button text="Отмена" type="danger" stylingMode="outlined" class="button-none" (click)="but_none()"
+      [disabled]="disabled[6]"></dx-button>
   </div>
 </div>

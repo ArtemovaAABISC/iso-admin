@@ -7,7 +7,7 @@ import { AdminContentComponent } from './components/admin-content/admin-content.
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DxAccordionModule, DxButtonModule, DxListModule, DxMenuModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxAccordionModule, DxButtonModule, DxListModule, DxMenuModule, DxTextBoxModule, DxCheckBoxModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { DxAccordionModule, DxButtonModule, DxListModule, DxMenuModule, DxTextBo
     DxTextBoxModule,
     ReactiveFormsModule,
     DxMenuModule,
-    DxAccordionModule
+    DxAccordionModule,
+    DxCheckBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
