@@ -1,18 +1,26 @@
 <div class="content">
   <div class="block-ul">
     <h1>Список контента</h1>
-    <dx-button text="Создать" type="danger" stylingMode="outlined" class="creat-button" (click)="add()"></dx-button>
-    <div *ngFor="let contentitem of responses" class="block-list">
-      <p class="id_content">ID:{{contentitem.id}}</p>
-      <p class="object_content">Object:{{contentitem.caption}}</p>
-      <div class="block-button">
-        <dx-button text="Обновить" type="success" stylingMode="contained" class="button-block"
-          (click)="UCDContent(contentitem.id, 0)"></dx-button>
-        <dx-button text="Клонировать" type="default" stylingMode="contained" class="button-block"
-          (click)="UCDContent(contentitem.id, 1)"></dx-button>
-        <dx-button text="Удалить" type="danger" stylingMode="contained" class="button-block"
-          (click)="deleteContent(contentitem.id)">
-        </dx-button>
+    <div class="nav">
+      <dx-button text="Создать" type="danger" stylingMode="outlined" class="creat-button" (click)="add()"></dx-button>
+      <div class="check_del">
+        <dx-check-box text="Показать удалённые объекты" [value]="checkBox_delete" [(ngModel)]="checkBox_delete">
+        </dx-check-box>
+      </div>
+    </div>
+    <div *ngFor="let contentitem of responses">
+      <div *ngIf="contentitem.enabled==!checkBox_delete" class="block-list">
+        <p class="id_content">ID:{{contentitem.id}}</p>
+        <p class="object_content">Object:{{contentitem.caption}}</p>
+        <div class="block-button">
+          <dx-button text="Обновить" type="success" stylingMode="contained" class="button-block"
+            (click)="UCDContent(contentitem.id, 0)"></dx-button>
+          <dx-button text="Клонировать" type="default" stylingMode="contained" class="button-block"
+            (click)="UCDContent(contentitem.id, 1)"></dx-button>
+          <dx-button text="Удалить" type="danger" stylingMode="contained" class="button-block"
+            (click)="UCDContent(contentitem.id, 2)">
+          </dx-button>
+        </div>
       </div>
     </div>
   </div>

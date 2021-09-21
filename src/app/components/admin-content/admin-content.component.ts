@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+//интерфес
 export interface Content {
   id: string
   caption: string
@@ -18,23 +19,24 @@ export interface Content {
 export class AdminContentComponent implements OnInit {
   checkBox_remove: boolean = false;//Кнопка checkbox "Форма создания"
   checkBox_delete: boolean = false;//Кнопка checkbox "Список" 
-  display = false;
+  display = false;//Отображение chechbox удалить
 
   idcontent = ''//поле id
   captioncontent = ''//поле cap
   urlcontent = ''//поле url
   hintcontent = ''//поле hint
-  form_h1 = 'Создать'
+  form_h1 = 'Создать'//поле передачи названия
   responses: Content[] = []; //для отображения
 
   constructor(private http: HttpClient) { }
 
   //метод отображения данных на странице
   ngOnInit() {
-    this.http.get<Content[]>('/api/ContentItemsApi').subscribe((response) => {
-      this.responses = response;
-      console.log(this.responses);
-    })
+    this.http.get<Content[]>('/api/ContentItemsApi')
+      .subscribe((response) => {
+        this.responses = response;
+        console.log(this.responses);
+      })
   }
 
   //Вызов метода кнопки "Создать"
@@ -82,7 +84,6 @@ export class AdminContentComponent implements OnInit {
     for (this.i = 0; this.i < this.responses.length; this.i++) {
       if (this.responses[this.i].id == id) {
         this.index = this.i
-        break
       }
     }
     this.http.put<Content>(`/api/ContentItemsApi/${id}`, newContent)
@@ -126,7 +127,9 @@ export class AdminContentComponent implements OnInit {
           this.display = true;
           this.disable(true)
           this.num_content = 1;
-          this.disabled[0] = false;
+          this.disabled[4] = false;
+          this.disabled[5] = false;
+          this.disabled[6] = false;
         }
       })
   }

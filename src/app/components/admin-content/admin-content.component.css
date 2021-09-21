@@ -19,8 +19,12 @@ p {
   align-items: center;
   padding: 5px;
 }
-.block-list:last-child {
-  margin-bottom: 0px;
+.nav {
+  display: flex;
+  align-items: center;
+}
+.check_del {
+  margin-left: auto;
 }
 .block-button {
   margin-left: auto;
