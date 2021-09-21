@@ -65,12 +65,12 @@ export class AdminContentComponent implements OnInit {
       })
   }
   //метод полного удаления
-  deleteContent(id: string) {
-    this.http.delete(`/api/ContentItemsApi/${id}`)
-      .subscribe(() => {
-        this.responses = this.responses.filter(con => con.id !== id)
-      })
-  }
+  // deleteContent(id: string) {
+  //   this.http.delete(`/api/ContentItemsApi/${id}`)
+  //     .subscribe(() => {
+  //       this.responses = this.responses.filter(con => con.id !== id)
+  //     })
+  // }
   index = 0;
   //метод обновления
   updateContent(id: string) {
